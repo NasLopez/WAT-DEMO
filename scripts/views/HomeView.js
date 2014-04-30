@@ -5,9 +5,6 @@ define(['jquery','underscore','backbone', 'collections/Posts', 'text!templates/h
 		el: '.page',
 		render: function () {
 			var that = this;
-			if (this.posts != undefined) {
-				console.log("posts", this.posts.models[0].attributes.posts[0]);
-			}
 			if (that.posts == undefined) {
 				that.posts = new Posts;
 				that.posts.fetch({
@@ -30,12 +27,10 @@ define(['jquery','underscore','backbone', 'collections/Posts', 'text!templates/h
 			'click .star' : 'star'
 		},
 		filter : function(e){
-			console.log("Event", e.target.value);
 			var template = _.template(postList, {posts: this.posts.filterSourceBy(e.target.value)});
 			$('#posts-list').html(template);
 		},
 		star : function (e){
-			console.log("STAR!!!!! ", this.posts.models[0].attributes.posts[e.target.value-1]);
 			if ( e.target.className.indexOf('like') == -1 ) {
 				$(e.currentTarget).html("<button class='glyphicon glyphicon-star btn btn btn-link like' value='" + e.target.value + "' style='font-size:28px'></button>");
 				this.posts.models[0].attributes.posts[e.target.value-1]["like"] = true;
