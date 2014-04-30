@@ -8,17 +8,19 @@ define(['jquery','underscore','backbone', 'views/HomeView', 'views/PostView'], f
 		}
 	});
 
+	var homeView = new HomeView();
+	var postView = new PostView();
+
 	var init = function(){
 
 		var router = new AppRouter();
 
 		router.on('route:home', function (act) {
-			var homeView = new HomeView();
+			
 			homeView.render();
 		});
 
 		router.on('route:home', function (id) {
-			var postView = new PostView();
 			postView.render({id: id});
 		});
 

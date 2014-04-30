@@ -10,3 +10,8 @@
 margin-bottom: 10px;
 margin-top: 0px;
 }
+
+#posts-list .btn-link{
+	color: #000;
+	text-decoration: none;
+}
